@@ -1,0 +1,274 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Half A Decade ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffe0eb, #f8c8dc, #e8c9f5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: #66334c;
+        }
+
+        .card {
+            position: relative;
+            width: 90%;
+            max-width: 500px;
+            padding: 55px 25px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 28px;
+            box-shadow: 0 15px 50px rgba(165, 76, 117, 0.18);
+            z-index: 2;
+            animation: appear 1s ease;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .heart {
+            font-size: 75px;
+            display: inline-block;
+            animation: heartbeat 1.3s infinite;
+            margin-bottom: 25px;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        h1 {
+            color: #d94f83;
+            font-size: 36px;
+            margin-bottom: 45px;
+        }
+
+        .confession {
+            color: #95647b;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-top: -30px;
+            margin-bottom: 35px;
+            font-weight: 500;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        button {
+            border: none;
+            border-radius: 30px;
+            padding: 15px 25px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .yes {
+            color: white;
+            background: linear-gradient(135deg, #ff75a5, #e64d87);
+            box-shadow: 0 5px 15px rgba(230, 77, 135, 0.3);
+        }
+
+        .yes:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(230, 77, 135, 0.4);
+        }
+
+        .no {
+            background: #f5e7ed;
+            color: #99647a;
+        }
+
+        .no:hover {
+            background: #f0d6e2;
+            transform: translateY(-3px);
+        }
+
+        .result {
+            display: none;
+            margin-top: 30px;
+            color: #d94f83;
+            font-size: 22px;
+            font-weight: bold;
+            line-height: 1.8;
+            animation: appear 0.6s ease;
+        }
+
+        .footer {
+            margin-top: 45px;
+            font-size: 13px;
+            color: #b48b9e;
+        }
+
+        .floating-heart {
+            position: fixed;
+            bottom: -30px;
+            font-size: 20px;
+            pointer-events: none;
+            z-index: 1;
+            animation: floatUp 6s linear forwards;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 45px 15px;
+            }
+
+            h1 {
+                font-size: 30px;
+                margin-bottom: 45px;
+            }
+
+            .confession {
+                font-size: 16px;
+                margin-top: -30px;
+                margin-bottom: 30px;
+            }
+
+            .buttons {
+                gap: 12px;
+            }
+
+            button {
+                padding: 13px 18px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <div class="heart">💗</div>
+
+        <h1>Half A Decade</h1>
+
+        <p class="confession">
+            Hoài Anh, cậu đồng ý làm người yêu tớ nhé? 💗
+        </p>
+
+        <div class="buttons" id="buttons">
+
+            <button class="yes" onclick="sayYes()">
+                Tớ đồng ý 💕
+            </button>
+
+            <button class="no" onclick="sayNo()">
+                Để tớ suy nghĩ 😳
+            </button>
+
+        </div>
+
+        <div class="result" id="result">
+            Yêu cậu nhiều lắm! 💖🥹<br>
+            💗💕💗
+        </div>
+
+        <div class="footer">
+            Made with ❤️ just for you
+        </div>
+
+    </div>
+
+    <script>
+
+        function sayYes() {
+            document.getElementById("result").style.display = "block";
+            document.getElementById("buttons").style.display = "none";
+
+            // Tạo hiệu ứng trái tim khi đồng ý
+            for (let i = 0; i < 50; i++) {
+                setTimeout(createHeart, i * 100);
+            }
+        }
+
+        function sayNo() {
+            alert("Không đồng ý cũng phải đồng ý, nói ít thôi đau đầu lắm !!!");
+        }
+
+        function createHeart() {
+            const heart = document.createElement("div");
+
+            heart.className = "floating-heart";
+
+            const hearts = ["💗", "💖", "💕", "💘", "🌸"];
+
+            heart.innerHTML = hearts[
+                Math.floor(Math.random() * hearts.length)
+            ];
+
+            heart.style.left = Math.random() * 100 + "vw";
+
+            heart.style.fontSize =
+                (15 + Math.random() * 25) + "px";
+
+            heart.style.animationDuration =
+                (4 + Math.random() * 4) + "s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+        }
+
+        // Trái tim bay liên tục
+        setInterval(createHeart, 700);
+
+    </script>
+
+</body>
+</html>
